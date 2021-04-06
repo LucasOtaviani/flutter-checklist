@@ -48,14 +48,9 @@ class CreateTask extends StatelessWidget {
                   SizedBox(height: 8),
                   TextFormField(
                     keyboardType: TextInputType.number,
-                    decoration: InputDecoration(labelText: "Preço"),
+                    decoration: InputDecoration(labelText: "Valor unitário"),
                     onSaved: (value) => _task.value = double.parse(value),
                     validator: (value) => value.isEmpty ? "Campo obrigatório" : null,
-                  ),
-                  SizedBox(height: 8),
-                  TextFormField(
-                    decoration: InputDecoration(labelText: "Anotação", isDense: true),
-                    onSaved: (value) => _task.description = value,
                   ),
                 ]
               ),

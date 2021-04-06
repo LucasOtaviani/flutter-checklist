@@ -7,22 +7,12 @@ class TaskRepository
   TaskRepository()
   {
     if (tasks.isEmpty) {
-      tasks.add(Task(1, name: "Maçã", quantity: 15, value: 10, description: "Pegue apenas as maçãs grandes! As pequenas não da nem pra 2 mordidas."));
-      tasks.add(Task(2, name: "Pêra", quantity: 16, value: 90, finished: false));
-      tasks.add(Task(3, name: "Pepino", quantity: 10, value: 100, finished: false));
-      tasks.add(Task(4, name: "Pepino", quantity: 10, value: 100, finished: false));
-      tasks.add(Task(5, name: "Pepino", quantity: 10, value: 100, finished: false));
-      tasks.add(Task(6, name: "Pepino", quantity: 10, value: 100, finished: false));
-      tasks.add(Task(7, name: "Pepino", quantity: 10, value: 100, finished: false));
-      tasks.add(Task(8, name: "Pepino", quantity: 10, value: 100, finished: false));
-      tasks.add(Task(9, name: "Pepino", quantity: 10, value: 100, finished: false));
-      tasks.add(Task(10, name: "Pepino", quantity: 10, value: 100, finished: false));
-      tasks.add(Task(11, name: "Pepino", quantity: 10, value: 100, finished: false));
-      tasks.add(Task(12, name: "Pepino", quantity: 10, value: 100, finished: false));
-      tasks.add(Task(13, name: "Pepino", quantity: 10, value: 100, finished: false));
-      tasks.add(Task(14, name: "Pepino", quantity: 10, value: 100, finished: false));
-      tasks.add(Task(15, name: "Pepino", quantity: 10, value: 100, finished: false));
-      tasks.add(Task(16, name: "Pepino", quantity: 10, value: 100, finished: false));
+      tasks.add(Task(1, name: "Pão", quantity: 8, value: 0.25));
+      tasks.add(Task(2, name: "Manteiga", quantity: 1, value: 4.75, finished: false));
+      tasks.add(Task(3, name: "Sabonete", quantity: 3, value: 2.25, finished: false));
+      tasks.add(Task(4, name: "Shampoo", quantity: 2, value: 4.50, finished: false));
+      tasks.add(Task(5, name: "Alface", quantity: 1, value: 3.00, finished: false));
+      tasks.add(Task(6, name: "Chocolate", quantity: 2, value: 5.50, finished: false));
     }
   }
 
@@ -52,6 +42,5 @@ class TaskRepository
     task.name = newTask.name;
     task.quantity = newTask.quantity;
     task.value = newTask.value;
-    task.description = newTask.description;
   }
 }

@@ -5,7 +5,6 @@ class Task {
   double value;
   bool finished;
   bool active;
-  String description;
 
   Task(
     this.id,
@@ -15,7 +14,6 @@ class Task {
       this.value = 0.0,
       this.finished = false,
       this.active = true,
-      this.description = "",
     }
   );
 }

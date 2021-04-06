@@ -25,59 +25,68 @@ class UpateTask extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("Edita tarefa"),
+        title: Text("Editar tarefa"),
         centerTitle: false,
-        actions: [
-          FlatButton(
-            child: Text(
-              "Salvar",
-              style: TextStyle(
-                color: Colors.white,
-              ),
+      ),
+      body: Column(
+        children: [
+          Container(
+            margin: const EdgeInsets.all(20),
+            child: Form(
+              key: _formKey,
+              child:Column(children: [
+                TextFormField(
+                  initialValue: task.name,
+                  decoration: InputDecoration(
+                    labelText: "Nome do produto",
+                  ),
+                  onSaved: (value) => _task.name = value,
+                  validator: (value) => value.isEmpty ? "Item" : null,
+                ),
+                SizedBox(height: 8),
+                TextFormField(
+                  initialValue: task.quantity.toString(),
+                  keyboardType: TextInputType.number,
+                  decoration: InputDecoration(labelText: "Quantidade"),
+                  onSaved: (value) => _task.quantity = int.parse(value),
+                  validator: (value) => value.isEmpty ? "Campo obrigatório" : null,
+                ),
+                SizedBox(height: 8),
+                TextFormField(
+                  initialValue: task.value.toString(),
+                  keyboardType: TextInputType.number,
+                  decoration: InputDecoration(labelText: "Preço"),
+                  onSaved: (value) => _task.value = double.parse(value),
+                  validator: (value) => value.isEmpty ? "Campo obrigatório" : null,
+                ),
+              ]),
             ),
-            onPressed: () => onSave(context, task),
+          ),
+          Container(
+            margin: const EdgeInsets.all(16),
+            width: double.infinity,
+            child: RaisedButton(
+              child: Text(
+                "Salvar",
+                style: TextStyle(
+                  color: Colors.white,
+                ),
+              ),
+              onPressed: () => onSave(context, task),
+            ),
           )
         ],
-      ),
-      body: Container(
-        margin: const EdgeInsets.all(20),
-        child: Form(
-          key: _formKey,
-          child:Column(children: [
-            TextFormField(
-              initialValue: task.name,
-              decoration: InputDecoration(
-                labelText: "Nome do produto",
-              ),
-              onSaved: (value) => _task.name = value,
-              validator: (value) => value.isEmpty ? "Item" : null,
-            ),
-            SizedBox(height: 8),
-            TextFormField(
-              initialValue: task.quantity.toString(),
-              keyboardType: TextInputType.number,
-              decoration: InputDecoration(labelText: "Quantidade"),
-              onSaved: (value) => _task.quantity = int.parse(value),
-              validator: (value) => value.isEmpty ? "Campo obrigatório" : null,
-            ),
-            SizedBox(height: 8),
-            TextFormField(
-              initialValue: task.value.toString(),
-              keyboardType: TextInputType.number,
-              decoration: InputDecoration(labelText: "Preço"),
-              onSaved: (value) => _task.value = double.parse(value),
-              validator: (value) => value.isEmpty ? "Campo obrigatório" : null,
-            ),
-            SizedBox(height: 8),
-            TextFormField(
-              maxLength: 100,
-              initialValue: task.description,
-              decoration: InputDecoration(labelText: "Anotação"),
-              onSaved: (value) => _task.description = value,
-            ),
-          ]),
-        ),
       ),
     );
   }
 }
+
+// FlatButton(
+//             child: Text(
+//               "Salvar",
+//               style: TextStyle(
+//                 color: Colors.white,
+//               ),
+//             ),
+//             onPressed: () => onSave(context, task),
+//           )

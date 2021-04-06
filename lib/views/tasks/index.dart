@@ -17,6 +17,7 @@ class _IndexPageState extends State<IndexTasks> {
   List<Task> disabledTasks = [];
 
   bool canEdit = false;
+  String hiddenText = "Remover";
 
   initState() {
     super.initState();
@@ -152,7 +153,7 @@ class _IndexPageState extends State<IndexTasks> {
                 ),
                 SizedBox(width: 4),
                 Text(
-                  "(" + tasks.length.toString() + ")",
+                  "(" + tasks.length.toString() + " - R\$: " + total().toString() + ")",
                   style: TextStyle(
                     fontSize: 14,
                   ),
@@ -174,7 +175,7 @@ class _IndexPageState extends State<IndexTasks> {
                       background: Container(
                         color: Color(0xffff4b69),
                         child: Center(
-                          child: Text("Remover",
+                          child: Text(hiddenText,
                             style: TextStyle(
                               color: Colors.white
                             ),
@@ -183,12 +184,18 @@ class _IndexPageState extends State<IndexTasks> {
                       ),
                       onDismissed: (direction) {
                         if (direction == DismissDirection.startToEnd) {
+                          setState(() => this.hiddenText = "Remover");
+
                           repository.delete(task.id);
                           sort();
+
                           setState(() => this.tasks.remove(task));
                         } else if (direction == DismissDirection.endToStart) {
+                          setState(() => this.hiddenText = "Desabilitar");
+
                           repository.delete(task.id);
                           sort();
+
                           setState(() {
                             disabledTasks.add(task);
                             tasks.remove(task);
@@ -233,7 +240,7 @@ class _IndexPageState extends State<IndexTasks> {
                                 ),
                                 SizedBox(width: 4),
                                 Text(
-                                  "(" + tasks[index].quantity.toString() + " itens)",
+                                  "(" + task.quantity.toString() + " itens" + "- R\$: " + task.value.toString() + ")",
                                   style: TextStyle(
                                     fontSize: 12,
                                     decoration: tasks[index].finished
@@ -323,7 +330,7 @@ class _IndexPageState extends State<IndexTasks> {
                           disabledTask.finished = false;               
                           disabledTasks.remove(disabledTask);  
 
-                          sort();               
+                          sort();      
                         });
                       },
                     ),
